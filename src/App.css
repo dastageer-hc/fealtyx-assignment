@@ -5,6 +5,7 @@ body {
 }
 
 .table-container {
+  position: relative;
   overflow-x: auto;
   max-width: 100%;
   background: white;
@@ -23,6 +24,7 @@ td {
   padding: 10px;
   border: 1px solid #ddd;
   text-align: left;
+  vertical-align: top;
 }
 
 th {
@@ -38,37 +40,102 @@ tr:nth-child(even) {
   width: 50px;
   height: 50px;
   border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
-.expand-btn {
+.product-info {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.product-id {
+  color: gray;
+  font-size: 12px;
+}
+
+.expand-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
   cursor: pointer;
+  font-size: 18px;
   color: #007bff;
-  font-weight: bold;
 }
 
-.hidden-row {
-  display: none;
+.icon-col {
+  width: 40px;
+  min-width: 40px;
 }
 
-.hidden-row[style*="display: table-row"] {
-  display: table-row;
+.expanded-row {
+  background-color: #e9f5ff;
 }
 
-/* Responsive column hiding based on priority */
-@media (max-width: 1300px) {
+.truncated {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 160px;
+  vertical-align: top;
+  cursor: pointer;
+}
+
+.tooltip {
+  position: fixed;
+  background-color: rgba(40, 40, 40, 0.9);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 13px;
+  z-index: 9999;
+  pointer-events: none;
+  max-width: 300px;
+  word-wrap: break-word;
+}
+.active-status::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background-color: green;
+  vertical-align: middle;
+}
+
+.inactive-status::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background-color: rgb(226, 53, 53);
+  vertical-align: middle;
+}
+
+/* hide priority columns at different screen widths */
+
+@media (max-width: 1399px) {
   .priority-4 {
     display: none;
   }
 }
 
-@media (max-width: 1024px) {
-  .priority-2 {
+@media (max-width: 1199px) {
+  .priority-3 {
     display: none;
   }
 }
 
-@media (max-width: 768px) {
-  .priority-3 {
+@media (max-width: 767px) {
+  .priority-2 {
     display: none;
   }
 }
