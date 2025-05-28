@@ -1,0 +1,74 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #f8f8f8;
+}
+
+.table-container {
+  overflow-x: auto;
+  max-width: 100%;
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.product-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.expand-btn {
+  cursor: pointer;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.hidden-row {
+  display: none;
+}
+
+.hidden-row[style*="display: table-row"] {
+  display: table-row;
+}
+
+/* Responsive column hiding based on priority */
+@media (max-width: 1300px) {
+  .priority-4 {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .priority-2 {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .priority-3 {
+    display: none;
+  }
+}
