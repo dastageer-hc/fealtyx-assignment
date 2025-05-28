@@ -1,15 +1,14 @@
-export const formatPrice = (priceStr) => {
+export const formatPrice = (priceStr = "") => {
   const num = parseInt(priceStr.replace(/[^\d]/g, ""));
-  if (num >= 1_000_000) return (num / 1_000_000).toFixed(1) + "M ₹";
-  if (num >= 1_000) return (num / 1_000).toFixed(1) + "k ₹";
-  return num.toLocaleString() + " ₹";
+  if (num >= 1_000_000) return (num / 1_000_000).toFixed(1) + "M ";
+  if (num >= 1_000) return (num / 1_000).toFixed(1) + "k ";
+  return num.toLocaleString();
 };
 
 export const formatRating = (ratingStr) => {
   const stars = ratingStr.length;
   return `${stars}.0 ⭐`;
 };
-
 
 export const formatDate = (dateString) => {
   const date = new Date(dateString);

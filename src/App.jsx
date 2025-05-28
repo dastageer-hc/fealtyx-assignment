@@ -10,8 +10,8 @@ const App = () => {
 
   const columns = [
     { key: 'product', label: 'Product', priority: 1, className: '' },
-    { key: 'brief', label: 'Brief Description', priority: 2, className: 'brief' },
-    { key: 'description', label: 'Detailed Description', priority: 4, className: 'desc' },
+    { key: 'brief', label: 'Overview', priority: 2, className: 'brief' },
+    { key: 'description', label: 'Details', priority: 4, className: 'desc' },
 
 
     { key: 'price', label: 'Price', priority: 1, className: 'price' },
@@ -74,7 +74,7 @@ const App = () => {
       "name": "iPhone 15",
       "brief": "Latest Apple flagship phone with top features and powerful processor.",
       "description": "The iPhone 15 comes with the latest A16 Bionic chip, Dynamic Island, and a high-resolution Super Retina XDR display.",
-      "price": "₹80000",
+      "price": "₹900",
       "launchDate": "2024-03-15",
       "orders": 5000,
       "inventory": 150,
@@ -189,7 +189,9 @@ const App = () => {
                       </div>
                     );
                   } else if (col.key === 'price') {
-                    content = formatPrice(product[col.key]);
+                    content = formatPrice(product[col.key]) + '₹';
+                  } else if (col.key === 'orders') {
+                    content = formatPrice(String(product[col.key]) ?? '');
                   } else if (col.key === 'rating') {
                     content = formatRating(product[col.key]);
                   } else if (col.key === 'launchDate') {
@@ -223,7 +225,7 @@ const App = () => {
                     {columns.map((col) => (
                       <div key={col.key} style={{ margin: '5px 0' }}>
                         <strong>{col.label}:</strong>{' '}
-                        {col.key === 'price'
+                        {(col.key === 'price' || col.key === 'orders')
                           ? formatPrice(product[col.key])
                           : col.key === 'rating'
                             ? formatRating(product[col.key])
